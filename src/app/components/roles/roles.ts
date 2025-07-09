@@ -26,4 +26,12 @@ export class Roles {
   radio:string="radio";
 
   state:string = "";
+
+  showWelcomeAlert(){
+    alert("Welcome to Angular tutorial...");
+  }
+
+  showMessage(message:string){
+    alert(message);
+  }
 }
