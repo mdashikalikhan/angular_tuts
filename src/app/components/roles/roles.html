@@ -1,1 +1,40 @@
 <p>roles works!</p>
+
+
+
+
+<div class="row">
+  <div class="col-3">
+    <p>{{firstName}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{version}}</p>
+  </div>
+
+  <div class="col-3">
+    <p>{{currentDate}}</p>
+  </div>
+  <div class="col-3">
+    <p>{{state}}</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <input [type]="text" [value]="firstName" class="form-control"/>
+  </div>
+  <div class="col-3">
+    <input [type]="text" [(ngModel)]="firstName" class="form-control" />
+  </div>
+  <div class="col-3">
+    <input [type]="checkbox"/>
+  </div>
+  <div class="col-3">
+    <select [(ngModel)]="state">
+      <option value="DHAKA">DHAKA</option>
+      <option value="Rajshahi">Rajshahi</option>
+      <option value="Khulna">Khulna</option>
+    </select>
+  </div>
+
+</div>
