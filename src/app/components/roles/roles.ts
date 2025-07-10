@@ -20,18 +20,18 @@ export class Roles implements OnInit {
   ngOnInit(): void {
     //alert("Init")
     this.getAllRoles();
+    console.log(this.roleList);
   }
 
   getAllRoles(){
-    const headers = new HttpHeaders(
-      {
-        'Accept':'text/plain',
-        'Content-type': 'text/plain'
-      }
-    );
-     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Public proxy
-  const apiUrl = 'https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles';
-    this.http.get("https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles")
+    // const headers = new HttpHeaders(
+    //   {
+    //     'Accept':'text/plain',
+    //     'Content-type': 'text/plain'
+    //   }
+    // );
+    
+    this.http.get("/api/ClientStrive/GetAllRoles")
     .subscribe((res:any)=>{
       this.roleList = res.data;
     });
