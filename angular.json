@@ -60,7 +60,8 @@
               "buildTarget": "angular_tuts:build:production"
             },
             "development": {
-              "buildTarget": "angular_tuts:build:development"
+              "buildTarget": "angular_tuts:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
