@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { IRole } from '../../model/interface/role';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-roles',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './roles.html',
   styleUrl: './roles.css'
 })
@@ -20,20 +21,23 @@ export class Roles implements OnInit {
   ngOnInit(): void {
     //alert("Init")
     this.getAllRoles();
-    console.log(this.roleList);
+    //console.log(this.roleList);
+
   }
 
   getAllRoles(){
     // const headers = new HttpHeaders(
     //   {
     //     'Accept':'text/plain',
-    //     'Content-type': 'text/plain'
+    //     'Content-type': 'text/plain',
+    //     'Access-Control-Allow-Origin': 'http://localhost:8080'
     //   }
     // );
-    
-    this.http.get("/api/ClientStrive/GetAllRoles")
+
+    this.http.get("http://localhost:8080/external/roles")
     .subscribe((res:any)=>{
-      this.roleList = res.data;
+      this.roleList = res;
+      //console.log(res);
     });
   }
 
