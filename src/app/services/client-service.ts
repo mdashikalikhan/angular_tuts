@@ -20,7 +20,7 @@ export class ClientService {
     return this.http.post<APIResponseModel>(environment.API_URL+"clients", obj)
   }
 
-  deleteClient(id:number):Observable<APIResponseModel>{
-    return this.http.delete<APIResponseModel>(environment.API_URL+"clients/"+id);
+  deleteClient(id:number):Observable<string>{
+    return this.http.delete<string>(environment.API_URL+"clients/"+id);
   }
 }

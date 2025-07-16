@@ -28,6 +28,9 @@
                   <th>
                     State
                   </th>
+                  <th>
+                    Action
+                  </th>
                 </tr>
 
               </thead>
@@ -40,6 +43,10 @@
                   <td>{{item.contactNo}}</td>
                   <td>{{item.city}}</td>
                   <td>{{item.state}}</td>
+                  <td>
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger" (click)="onDelete(item.clientId)">Delete</button>
+                  </td>
                 </tr>
                 }
 

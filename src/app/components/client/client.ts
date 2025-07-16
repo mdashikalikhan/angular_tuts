@@ -41,6 +41,7 @@ export class Client implements OnInit{
         if(result.result){
           alert(environment.CLIENT_CREATED);
           this.loadClient();
+          this.clientObject = new ClientObject();
         } else{
           alert(environment.CLIENT_NOT_CREATED);
         }
@@ -51,6 +52,26 @@ export class Client implements OnInit{
 
 
     })
+  }
+
+  onDelete(id: number){
+    const isDelete = confirm("Are you sure want to delete?");
+
+    if(!isDelete){
+      return;
+    }
+
+    this.clientService.deleteClient(id).subscribe(
+      {
+        next: (result:string)=>{
+          alert("Client delete success");
+          this.loadClient();
+        },
+        error: err=>{
+          alert("Invalid Client...");
+        }
+      }
+    );
   }
 
 }
