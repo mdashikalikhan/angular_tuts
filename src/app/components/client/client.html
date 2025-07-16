@@ -44,7 +44,7 @@
                   <td>{{item.city}}</td>
                   <td>{{item.state}}</td>
                   <td>
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
                     <button class="btn btn-danger" (click)="onDelete(item.clientId)">Delete</button>
                   </td>
                 </tr>
@@ -66,31 +66,31 @@
         <div class="row">
           <div class="col-6">
             <label for="">Person Name</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.contactPersonName"/>
           </div>
           <div class="col-6">
             <label for="">Company Name</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.companyName"/>
           </div>
           <div class="col-6">
             <label for="">Contact No</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.contactNo"/>
           </div>
           <div class="col-6">
             <label for="">City</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.city"/>
           </div>
           <div class="col-6">
             <label for="">State</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.state"/>
           </div>
           <div class="col-6">
             <label for="">Pin Code</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.pinCode"/>
           </div>
           <div class="col-6">
             <label for="">Address</label>
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" [(ngModel)]="clientObject.address"></textarea>
           </div>
 
 
@@ -98,16 +98,16 @@
 
           <div class="col-6">
             <label for="">Employee Strength</label>
-            <input type="text" class="form-control" />
+            <input type="number" class="form-control" [(ngModel)]="clientObject.employeeStrength"/>
           </div>
           <div class="col-6">
             <label for="">GST No</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" [(ngModel)]="clientObject.gstNo"/>
           </div>
         </div>
         <div class="col-6">
           <label for="">Reg No</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" [(ngModel)]="clientObject.regNo"/>
         </div>
       </div>
       <div class="row pt-2">

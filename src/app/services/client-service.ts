@@ -21,6 +21,8 @@ export class ClientService {
   }
 
   deleteClient(id:number):Observable<string>{
-    return this.http.delete<string>(environment.API_URL+"clients/"+id);
+    return this.http.delete(environment.API_URL+"clients/"+id, {
+      responseType:'text' as const
+    });
   }
 }

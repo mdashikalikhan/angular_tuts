@@ -4,11 +4,12 @@ import { ClientService } from './../../services/client-service';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ClientObject } from '../../model/class/Client';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './client.html',
   styleUrl: './client.css'
 })
@@ -54,6 +55,10 @@ export class Client implements OnInit{
     })
   }
 
+  onEdit(obj:ClientObject){
+    this.clientObject = obj;
+  }
+
   onDelete(id: number){
     const isDelete = confirm("Are you sure want to delete?");
 
@@ -68,6 +73,7 @@ export class Client implements OnInit{
           this.loadClient();
         },
         error: err=>{
+          console.error("Error: ", err)
           alert("Invalid Client...");
         }
       }
