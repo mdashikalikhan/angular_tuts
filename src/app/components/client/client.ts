@@ -59,6 +59,10 @@ export class Client implements OnInit{
     this.clientObject = obj;
   }
 
+  onReset(){
+    this.clientObject = new ClientObject();
+  }
+
   onDelete(id: number){
     const isDelete = confirm("Are you sure want to delete?");
 
