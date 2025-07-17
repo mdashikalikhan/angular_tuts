@@ -71,8 +71,7 @@
                 [(ngModel)]="clientObject.contactPersonName" name="contactPersonName"/>
               @if (personName.touched || personName.dirty) {
               <div class="text-danger">
-                @if (personName?.errors?.['required'] &&
-                (personName?.touched || personName?.dirty)) {
+                @if (personName?.errors?.['required'] ) {
                 <span>This is required.</span>
                 }
                 @if (personName?.errors?.['minlength']) {
@@ -86,7 +85,17 @@
             </div>
             <div class="col-6">
               <label for="">Company Name</label>
-              <input type="text" class="form-control" [(ngModel)]="clientObject.companyName" name="companyName" />
+              <input type="text" class="form-control" #companyName="ngModel" required minlength="5" [(ngModel)]="clientObject.companyName" name="companyName" />
+              @if (personName.touched || personName.dirty) {
+                <div class="text-danger">
+                  @if (companyName?.errors?.['required']) {
+                    <span>This is required.</span>
+                  }
+                  @if (companyName?.errors?.['minlength']) {
+                    <span>Min % Chars required.</span>
+                  }
+                </div>
+              }
             </div>
             <div class="col-6">
               <label for="">Contact No</label>

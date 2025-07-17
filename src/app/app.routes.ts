@@ -1,3 +1,4 @@
+import { ClientProject } from './components/client-project/client-project';
 import { Client } from './components/client/client';
 import { Employee } from './components/employee/employee';
 import { Master } from './components/master/master';
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'client',
     component: Client
+  },
+  {
+    path: 'client-project',
+    component: ClientProject
   }
 ];
