@@ -1,8 +1,16 @@
+<p>{{clientObject | json}}</p>
+<select >
+  @for (item of userList$ | async; track $index) {
+    <option [value]="item.name">{{item.name}}</option>
+  }
+</select>
+<app-alert-component [alertType]="'Error'" [alertMessage]="'Error in Client.'"></app-alert-component>
 <div class="row">
+
   <div class="col-8">
     <div class="card">
       <div class="card-header bg-success">
-        Client List
+        Client List - {{currentDate | date: "dd-MMM-yyyy"}}
       </div>
       <div class="card-body">
         <div class="row">
@@ -39,7 +47,7 @@
                 <tr>
                   <td>{{$index+1}}</td>
                   <td>{{item.contactPersonName}}</td>
-                  <td>{{item.companyName}}</td>
+                  <td>{{item.companyName | uppercase}}</td>
                   <td>{{item.contactNo}}</td>
                   <td>{{item.city}}</td>
                   <td>{{item.state}}</td>
@@ -72,7 +80,7 @@
               @if (personName.touched || personName.dirty) {
               <div class="text-danger">
                 @if (personName?.errors?.['required'] ) {
-                <span>This is required.</span>
+                <span>{{constant.VALIDATION_MESSAGE.REQUIRED}}</span>
                 }
                 @if (personName?.errors?.['minlength']) {
                 <span>Min % Chars required.</span>
@@ -86,7 +94,7 @@
             <div class="col-6">
               <label for="">Company Name</label>
               <input type="text" class="form-control" #companyName="ngModel" required minlength="5" [(ngModel)]="clientObject.companyName" name="companyName" />
-              @if (personName.touched || personName.dirty) {
+              @if (companyName.touched || companyName.dirty) {
                 <div class="text-danger">
                   @if (companyName?.errors?.['required']) {
                     <span>This is required.</span>
@@ -141,10 +149,15 @@
               <button class="btn btn-secondary" (click)="onReset()">Reset</button>
             </div>
             <div class="col-6 text-center">
-              <button class="btn btn-success"
+              <!-- <button class="btn btn-success"
                (click)="onSaveClient()" [disabled]="!form.valid">
                 {{clientObject.clientId==0?'Save Client' : 'Update Client'}}
-              </button>
+              </button> -->
+              <app-my-button (onBtnClicked)="onSaveClient($event)" [btnClass]="'btn btn-success'" [btnText]="clientObject.clientId==0?'Save Client' : 'Update Client'" >
+
+              </app-my-button>
+
+
             </div>
           </div>
         </form>

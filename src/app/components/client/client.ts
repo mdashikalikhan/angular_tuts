@@ -4,16 +4,24 @@ import { ClientService } from './../../services/client-service';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ClientObject } from '../../model/class/Client';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, JsonPipe, UpperCasePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Constant } from '../../constant/Constant';
+import { AlertComponent } from "../../reusableComponent/alert-component/alert-component";
+import { MyButton } from "../../reusableComponent/my-button/my-button";
 
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, UpperCasePipe, DatePipe, JsonPipe, AsyncPipe, AlertComponent, MyButton],
   templateUrl: './client.html',
   styleUrl: './client.css'
 })
 export class Client implements OnInit{
+
+  constant = Constant;
+
+  currentDate: Date = new Date();
 
   clientObject : ClientObject = new ClientObject();
 
@@ -21,8 +29,12 @@ export class Client implements OnInit{
 
   clientService = inject(ClientService);
 
+  userList$: Observable<any> = new Observable<any>();
+
+
   ngOnInit(): void {
     this.loadClient();
+    this.userList$ = this.clientService.getAllUser();
   }
 
   loadClient(){
@@ -36,7 +48,7 @@ export class Client implements OnInit{
     });
   }
 
-  onSaveClient(){
+  onSaveClient(data:string){
     this.clientService.updateClient(this.clientObject).subscribe({
       next: (result:APIResponseModel)=>{
         if(result.result){
