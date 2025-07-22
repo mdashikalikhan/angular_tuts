@@ -1,0 +1,15 @@
+<div class="card p-3">
+  <h3>RxJS Observable Tester</h3>
+
+  <div class="mb-2">
+    <button (click)="createObservable()" class="btn btn-primary">Create Observable</button>
+    <button (click)="emitValue()" class="btn btn-success">Emit Value</button>
+    <button (click)="completeObservable()" class="btn btn-info">Complete</button>
+    <button (click)="throwError()" class="btn btn-danger">Throw Error</button>
+    <button (click)="unsubscribe()" class="btn btn-warning">Unsubscribe</button>
+    <button (click)="reset()" class="btn btn-secondary">Reset</button>
+  </div>
+
+  <div><strong>Status:</strong> {{ status }}</div>
+  <div><strong>Emitted Values:</strong> {{ values.join(', ') || 'None' }}</div>
+</div>

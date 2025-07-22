@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login-component/login-component';
 import { Master } from './components/master/master';
 import { Routes } from '@angular/router';
 import { authGuard } from './services/guards/auth-guard';
+import { RxjsTester } from './components/rxjs-tester/rxjs-tester';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
       {
         path: 'client-project',
         component: ClientProject
+      },
+      {
+        path: 'rxjs',
+        component: RxjsTester
       }
     ]
   }

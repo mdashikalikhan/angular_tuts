@@ -67,7 +67,6 @@
             },
             "development": {
               "buildTarget": "angular_tuts:build:development"
-
             }
           },
           "defaultConfiguration": "development"
@@ -93,11 +92,23 @@
               "src/styles.css"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
