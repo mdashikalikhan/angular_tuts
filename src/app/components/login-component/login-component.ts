@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ILoginObject } from './../../model/interface/role';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,13 +11,22 @@ import { Router } from '@angular/router';
   templateUrl: './login-component.html',
   styleUrl: './login-component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  
   loginObj: ILoginObject={
     email: "",
     password: ""
   };
 
   router = inject(Router)
+
+  ngOnInit(): void {
+    const localUser = localStorage.getItem("userId");
+    if(localUser){
+      this.router.navigateByUrl("/client");
+    }
+  }
+
   onLogin(){
     if(this.loginObj.email=='khan.ashik@gmail.com' && this.loginObj.password=='123456'){
       this.router.navigateByUrl("/client");
