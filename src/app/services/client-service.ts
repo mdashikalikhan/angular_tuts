@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClientObject } from '../model/class/Client';
 import { environment } from '../../environments/environment';
@@ -11,7 +11,8 @@ import { Constant } from '../constant/Constant';
 })
 export class ClientService {
 
-  constructor(private http:HttpClient) { }
+  http:HttpClient = inject(HttpClient);
+  //constructor(private http:HttpClient) { }
 
   getAllClients():Observable<APIResponseModel>{
     return this.http.get<APIResponseModel>(environment.API_URL+Constant.API_METHOD.CLIENTS);
